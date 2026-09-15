@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.tile_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .tile_container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tile {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+.placeholder {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.button:not(.connected):not(.disconnected) {
+    background-color: #007BFF;
+}
+
+.connected {
+    background-color: #009900;
+}
+
+.disconnected {
+    background-color: #cc0000;
+}
+
+.progressbar {
+    height: 20px;
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.progressbar_fill {
+    height: 100%;
+    width: 0%;
+    background-color: #007BFF;
+    border-radius: 5px;
+}
+
+.led {
+    font-weight: bold;
+    color: white;
+    background-color: #ff0000;
+    padding: 10px;
+    display: inline-block;
+    margin-top: 10px;
+}

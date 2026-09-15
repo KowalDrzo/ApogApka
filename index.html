@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apogemix Receive Station</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tile">
+    <h1>ApogApka (Serial)</h1>
+
+    <button class="button disconnected"
+            id="connectButton"
+            onclick="connectSerial()">
+        Disconnected
+    </button>
+
+    <form id="freqForm">
+        <label for="freqmhz">Frequency MHz:</label>
+        <input type="number" id="freqmhz" min="100" max="500">
+        <button type="submit" class="button">Set frequency</button>
+    </form>
+
+    <h2>Devices List</h2>
+
+    <select id="deviceList" onchange="deviceChanged()">
+    </select>
+</div>
+
+<div class="tile_container">
+
+    <div class="tile">
+        <h2>GPS String</h2>
+        <p class="placeholder" id="gpsStr">
+            +NN.NNNN, +EEE.EEEE
+        </p>
+    </div>
+
+    <div class="tile">
+        <h2>Baro altitude [m]</h2>
+        <p class="placeholder" id="altitude">
+            AAAAA.A
+        </p>
+    </div>
+
+    <div class="tile">
+        <h2>Time from last frame [s]</h2>
+        <p class="placeholder" id="time_s">
+            0.0
+        </p>
+    </div>
+
+    <div class="tile">
+        <div id="cont1" class="led">Continuity 1</div>
+        <div id="cont2" class="led">Continuity 2</div>
+        <div id="mosState" class="led">Mosfet</div>
+    </div>
+
+    <div class="tile">
+        <button class="button" onclick="sendCommand('TEST1')">
+            Test 1
+        </button>
+
+        <button class="button" onclick="sendCommand('TEST2')">
+            Test 2
+        </button>
+    </div>
+
+    <div class="tile">
+        <select id="commandList">
+            <option value="RECALIBRATE">RECALIBRATE</option>
+            <option value="MOS_ON">MOS_ON</option>
+            <option value="MOS_OFF">MOS_OFF</option>
+            <option value="MOS_CLK">MOS_CLK</option>
+        </select>
+
+        <button class="button" onclick="selectCommand()">
+            Send command
+        </button>
+    </div>
+
+    <div class="tile">
+        <label>Rocket State:</label>
+        <label id="rocketState">Unknown</label>
+
+        <div class="progressbar">
+            <div class="progressbar_fill"
+                 id="progressbar_fill"></div>
+        </div>
+    </div>
+
+</div>
+
+<a href="#" onclick="downloadData()">
+    Download received frames
+</a>
+
+<p>ApogApka Serial Edition v2.0.0 2026 by Michal Kowalski</p>
+
+<script src="app.js"></script>
+
+</body>
+</html>
