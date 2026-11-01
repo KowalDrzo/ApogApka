@@ -126,8 +126,31 @@ async function setFrequency(event) {
 
     event.preventDefault();
 
-    const freq =
-        document.getElementById("freqmhz").value;
+    await sendFrequency(document.getElementById("freqmhz"));
+}
+
+async function setFrequencyPreset(frequency) {
+
+    const frequencyInput =
+        document.getElementById("freqmhz");
+
+    frequencyInput.value = frequency.toFixed(3);
+
+    await sendFrequency(frequencyInput);
+}
+
+async function sendFrequency(frequencyInput) {
+
+    const frequency = Number(frequencyInput.value);
+
+    if (!Number.isFinite(frequency) ||
+        frequency < 410 || frequency > 490 ||
+        !frequencyInput.checkValidity()) {
+        frequencyInput.reportValidity();
+        return;
+    }
+
+    const freq = frequency.toFixed(3);
 
     await sendSerial("_FREQ;" + freq);
 }

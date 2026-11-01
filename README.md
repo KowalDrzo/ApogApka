@@ -118,16 +118,23 @@ The application sends the following command:
 _FREQ;<frequency>
 ```
 
+The application also provides two frequency presets:
+
+- **Apogemix ISM** — 434.625 MHz
+- **Apogemix HAM** — 439.000 MHz
+
+Selecting a preset fills the frequency field and sends the same `_FREQ;<frequency>` command.
+
 For example:
 
 ```text
-_FREQ;433
+_FREQ;434.625
 ```
 
-The valid input range currently defined by the application is:
+The valid input range currently defined by the application is 410–490 MHz, with 0.001 MHz precision:
 
 ```text
-100–500 MHz
+410–490 MHz (step: 0.001 MHz)
 ```
 
 The actual usable frequency range also depends on the radio hardware and Apogemix firmware configuration.
